@@ -2,50 +2,15 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@*<script type="text/javascript">
-    $(document).ready(function () {
-        $('.sayHi').click(function () {
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("SayHi")',
-                success: function (result) {
-                    $('#result1').html(result);
-                }
-            });
-            //Register new user
-            $('.Register').submit(function (event) {
-                event.preventDefault();
-                console.log($(this).serialize());
-                $.ajax({
-                    url: '@Url.Action("Register")',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: $(this).serialize(),
-                    success: function (result) {
-                        var resultMessage = 'New user added to database<br>Email: ' + result.Email ;
-                        $('#result2').html(resultMessage);
-                    }
-                });
-            });
 
-
-
-
-        });
-    });
-</script>*@
 <p class="sayHi">CLICK ME</p>
 <p id="result1"></p>
 
-<form class="Register" action="Register">
-    <label for="Email">Email: </label>
-    <input type="text" name="Email" />
-    @*<label for="UserName">UserName: </label>
-    <input type="text" name="UserName" />*@
-    <label for="Password">Password: </label>
-    <input type="password" name="Password" />
-
-    
-    <button type="submit">Submit</button>
-</form>
+<p class="registration">Click to Register</p>
 <div id="result2"></div>
+
+<p class="login">Click to log in</p>
+<div id="result4"></div>
+
+<p class="posts">SEE SOME SHIT</p>
+<div id="xpPost"></div>

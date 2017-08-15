@@ -30,23 +30,21 @@ namespace TravelBlog.Controllers
         {
             return View();
         }
+
+
         [Route("/Ajax/SayHi")]
         public IActionResult SayHi()
         {
             return Content("HIHIHIHIHIHIHIHIHIHIHIHIHI", "text/plain");
         }
-        //[Route("/Ajax/Register")]
-        //[HttpPost]
-        //public IActionResult Register(string Email, string Password)
-        //{
-        //    ApplicationUser newUser = new ApplicationUser();
-        //    newUser.Email = Email;
-        //    newUser = Password;
-        //    newUser.ConfirmPassword = ConfirmPassword;
-        //    db.Users.Add(newUser);
-        //    db.SaveChanges();
-        //    return Json(Email);
-        //}
+
+        //Registration 
+        [Route("/Ajax/Registration")]
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
         [Route("/Ajax/Register")]
         [HttpPost]
         public async Task<IActionResult> Register(string Email, string Password)
@@ -55,6 +53,29 @@ namespace TravelBlog.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, Password);
             if (result.Succeeded)
             {
+                return Json(user);
+            }
+            else
+            {
+                return View();
+            }
+        }
+        //end registration
+
+        //Log In
+        [Route("/Ajax/LoginForm")]
+        public IActionResult LogInForm()
+        {
+            return View();
+        }
+        [Route("/Ajax/Login")]
+        [HttpPost]
+        public async Task<IActionResult> Login(string Email, string Password)
+        {
+            //LoginViewModel model = new LoginViewModel { Email = Email, Password = Password };
+            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(Email, Password, isPersistent: true, lockoutOnFailure: false);
+            if (result.Succeeded)
+            { 
                 return Json(result);
             }
             else
@@ -62,5 +83,7 @@ namespace TravelBlog.Controllers
                 return View();
             }
         }
+        //end of log in
+        
     }
 }
