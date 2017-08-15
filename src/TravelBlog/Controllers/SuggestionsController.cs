@@ -31,7 +31,7 @@ namespace TravelBlog.Controllers
         //View list of suggestions
         public IActionResult Index()
         {
-            return View(suggestionRepo.Suggestions.ToList());
+            return View(suggestionRepo.Suggestions.OrderByDescending(s => s.Votes).ToList());
         }
         //Details view of suggestion
         public IActionResult Details(int id)

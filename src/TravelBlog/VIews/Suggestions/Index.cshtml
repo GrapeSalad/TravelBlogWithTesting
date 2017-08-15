@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Experiences";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<TravelBlog.Models.Suggestion>
+<h2>Suggestions</h2>
+
+<div id="sourceDiv">
+    <main class="cards">
+        @foreach (var listSuggestion in Model)
+        {
+            <article class="card">
+                <div class="text">
+                    <h3>Place: @Html.DisplayFor(name => listSuggestion.Place)</h3>
+                    <h4>Author: @Html.DisplayFor(location => listSuggestion.Author)</h4>
+                    <p>Description: @Html.DisplayFor(description => listSuggestion.Description)</p>
+                    <p>Votes: @Html.DisplayFor(votes => listSuggestion.Votes)</p>
+                </div>
+            </article>
+        }
+    </main>
+    @Html.ActionLink("Create New", "Create")
+</div>

@@ -67,7 +67,8 @@
             type: 'GET',
             url: '/Experience/Index',
             success: function (result) {
-                $('#xpPost').html(result);
+                var div = $(result).find('#sourceDiv').html();
+                $('#xpPost').html(div);
             }
         });
     });

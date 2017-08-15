@@ -18,7 +18,7 @@
 <h3>Comments for the '@Html.DisplayFor(model => model.Title)' Experience</h3>
 @foreach (var comment in Model.Comments)
 {
-    <p>@comment.CommentBody</p>
+    <p>@comment.User: @comment.CommentBody</p>
 
 }
 <br />

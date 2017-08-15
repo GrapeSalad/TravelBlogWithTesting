@@ -63,7 +63,7 @@ namespace TravelBlog
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("David Please Make This Stop. It Hurts Me...");
+                await context.Response.WriteAsync("David Please Stop! It Hurts Me...");
             });
         }
     }
