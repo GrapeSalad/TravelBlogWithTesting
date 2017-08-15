@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Http;
 using TravelBlog.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TravelBlog.Controllers
 {
-
     public class RoleController : Controller
     {
         private readonly TravelBlogContext _db;
@@ -37,6 +37,7 @@ namespace TravelBlog.Controllers
         //
         // POST: /Roles/Create
         [HttpPost]
+        [Authorize(Roles="superman")]
         public ActionResult Create(string RoleName)
         {
             try
@@ -147,6 +148,7 @@ namespace TravelBlog.Controllers
             if (!string.IsNullOrWhiteSpace(UserName))
             {
                 ApplicationUser user = await _userManager.FindByNameAsync(UserName);
+                //View roles 
                 ViewBag.RolesForThisUser = await _userManager.GetRolesAsync(user);
                 var users = _db.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
                 var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
@@ -155,7 +157,7 @@ namespace TravelBlog.Controllers
             }
             return View("ManageUserRoles");
         }
-
+        [Authorize(Roles ="batman")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteRoleForUser(string UserName, string Roles)

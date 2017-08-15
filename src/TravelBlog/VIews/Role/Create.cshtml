@@ -2,8 +2,11 @@
     ViewBag.Title = "Create Role";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model IEnumerable<Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole>
 
 <h2>Create Role</h2>
+<p>Hello @User.Identity.Name!</p>
+<p>@User.IsInRole("superman")</p>
 @Html.ActionLink("List Roles", "Index") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
 <hr />
 @using (Html.BeginForm())

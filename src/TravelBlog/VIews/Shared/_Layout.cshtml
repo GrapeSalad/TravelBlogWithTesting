@@ -2,7 +2,9 @@
 
 <html>
 <head>
-    <script type="text/javascript" src="/scripts/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="~/scripts/ajaxLogint.js"></script>
+
     <link rel="stylesheet" type="text/css" href="~/styles/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="~/styles/Styles.css" />
     <meta name="viewport" content="width=device-width" />
@@ -24,6 +26,7 @@
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Experiences", "Index", "Experience", null, new { @class = "nav navbar-nav" })</li>
                         <li>@Html.ActionLink("Regions", "Index", "Regions", null, new { @class = "nav navbar-nav" })</li>
+                        <li>@Html.ActionLink("Ajax Playground", "Index", "Ajax", null, new { @class = "nav navbar-nav" })</li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

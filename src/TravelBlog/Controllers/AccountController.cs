@@ -46,7 +46,7 @@ namespace TravelBlog.Controllers
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Role");
             }
             else
             {
